@@ -1,5 +1,14 @@
+# CI Specific Files
+####################
 */config/development
 */logs/log-*.php
 */logs/!index.html
 */cache/*
 */cache/!index.html
+
+# OS Generated Files
+####################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
