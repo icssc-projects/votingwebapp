@@ -22,8 +22,7 @@
 					<?php foreach($teams->result_array() as $row){?>
 					<span id="<?php echo $row['id']; ?>">
 						<h2><?php echo $row['name']; ?></h2>
-							<div id="total<?php echo $row['id']; ?>">Total for this Team: <br/><h2>0 out of 42 points</h2></div>	
-							<div id="state"></div>
+							<div id="total<?php echo $row['id']; ?>"><h2>0 out of 42 points</h2></div>	
 							<table>
 								<tr>How well does the application fulfill the theme of self-improvement?</tr>
 								<tr>
@@ -179,11 +178,13 @@
 						<input id="saveForm" type="submit" value="Submit" />
 						</span>
 				</form>
+							<div id="state" style="color:red;">Updated!</div>
 			</div>
 	</div>
 </div>
 <script type="text/javascript">
 
+/* Uncomment this to enable Ajax update
 function updateScore(judge, team, question, elem)
 {
  var xmlhttp;
@@ -200,16 +201,17 @@ function updateScore(judge, team, question, elem)
 		{
 		    if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		    {
-		         document.getElementById("state").innerHTML=xmlhttp.responseText;
+		         document.getElementById("state").innerHTML=xmlhttp.responseText + "<br />";
 				 $("#state").show(500);
-				 $("$state").hide(500);
+				 $("#state").hide(500);
 			}
 		}
 		xmlhttp.open("GET", "/index.php/voting/votingAjax/?j=" + judge + "&t=" + team + "&q=" + question + "&v=" + value,true);
 		xmlhttp.send();
-}
+}*/
 
 $(document).ready(function() {
+		$("#state").hide();
 		$("span").hide();
 		$("#submit").hide();
 		
