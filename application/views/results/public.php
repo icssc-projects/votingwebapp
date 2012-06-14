@@ -41,60 +41,23 @@ function number_suffix($number){
 
 ?>
 	<div id="body">
-		
-		<p>Results: - ALL<br /></p>
-		
-		<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<tr>
-			<th>Team</th>
-			<th>Category</th>
-			<th>Rank</th>
-			<th>Raw Score</th>
-		</tr>
-		
-		<?php
-		$rank = 1;
-		foreach($results->result_array() as $row){
-			
-		?>
-		<tr>
-			<td><?php echo $row["name"]; ?></td>
-			<td><?php echo $row["category"]; ?></td>
-			<td><?php echo number_suffix($rank++); ?></td>
-			<td><?php echo $row["score"]; ?></td>
-		</tr>
-		<?php
-			
-		}
-		?>
-
-		</table>
-		
-		<br /><hr /><br />
-		
 		<p>Results: - CS-190<br /></p>
 		
 		<table border="1" cellpadding="5" cellspacing="5" width="100%">
 		<tr>
 			<th>Team</th>
-			<th>Category</th>
 			<th>Rank</th>
-			<th>Raw Score</th>
 		</tr>
 		
 		<?php
 		$rank = 1;
 		foreach($resultsCS190->result_array() as $row){
-			
 		?>
 		<tr>
 			<td><?php echo $row["name"]; ?></td>
-			<td><?php echo $row["category"]; ?></td>
 			<td><?php echo number_suffix($rank++); ?></td>
-			<td><?php echo $row["score"]; ?></td>
 		</tr>
 		<?php
-			
 		}
 		?>
 
@@ -106,24 +69,18 @@ function number_suffix($number){
 			<table border="1" cellpadding="5" cellspacing="5" width="100%">
 			<tr>
 				<th>Team</th>
-				<th>Category</th>
 				<th>Rank</th>
-				<th>Raw Score</th>
 			</tr>
 
 			<?php
 			$rank = 1;
 			foreach($resultsGeneral->result_array() as $row){
-				
 			?>
 			<tr>
 				<td><?php echo $row["name"]; ?></td>
-				<td><?php echo $row["category"]; ?></td>
 				<td><?php echo number_suffix($rank++); ?></td>
-				<td><?php echo $row["score"]; ?></td>
 			</tr>
 			<?php
-				
 			}
 			?>
 

@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://voting.appjam.roboteater.com/';
+$config['base_url']	= 'http://amase.roboteater.com/';
 
 /*
 |--------------------------------------------------------------------------

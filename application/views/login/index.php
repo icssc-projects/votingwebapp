@@ -1,8 +1,8 @@
 <div id="container">
-	<h1>Please Login!</h1>
+	<h1>Please Login! - <a href="<?php echo $siteurl; ?>index.php/results/">Public Results</a></h1>
 
 	<div id="body">
-		<p>Please login to vote for AppJam!</p>
+		<p>Please login to vote for AMASE!</p>
 		<?php
 		if($status == "invalid")
 		{

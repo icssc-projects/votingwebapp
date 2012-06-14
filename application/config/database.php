@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql.appjam.roboteater.com';
-$db['default']['username'] = 'appjamvoting';
+$db['default']['hostname'] = 'mysql.roboteater.com';
+$db['default']['username'] = 'amasevoting';
 $db['default']['password'] = '4C28DDpbAK5D2';
-$db['default']['database'] = 'appjamvoting';
+$db['default']['database'] = 'amasevoting';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

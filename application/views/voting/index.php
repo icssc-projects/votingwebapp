@@ -1,4 +1,5 @@
 
+
 <div id="container">
 	<!--<h1>AppJam Voting</h1>-->
 	
@@ -10,172 +11,84 @@
 				<li id="tab<?php echo $row['id']; ?>"><a href="#"><?php echo $row['name']; ?></a></li>
 				<?php } ?>
 				<br/><br />
-				<li id="submit"><a href="#">Submit</a></li>
+				<li id="submit"><a href="#">COMPLETED!</a></li>
 				<!--<li class ="blank"><a href="#">&nbsp;</a></li>-->
 			</ul>
 			<div id="info"></div>
 			<div id="forms">
-			Higher score = Better Score <br /> Make sure you vote on every category on every team before you submit!<br />
-			The submit button will show up once you have completed the form for every team.<br />
+			Higher score = Better Score <br /> Make sure you vote on every category on every team!<br />
+			Each team will turn <font color="#8ad354">green</font> when all questions have been completed<br />
 				<form id="judging-form" name="judging-form" method="POST" action="<?php echo $siteurl;?>index.php/voting/verifySubmission/">
 
 					<?php foreach($teams->result_array() as $row){?>
 					<span id="<?php echo $row['id']; ?>">
 						<h2><?php echo $row['name']; ?></h2>
-							<div id="total<?php echo $row['id']; ?>"><h2>0 out of 42 points</h2></div>	
+							<div id="total<?php echo $row['id']; ?>"><h2>0 out of 50 points</h2></div>	
 							<table>
-								<tr>How well does the application fulfill the theme of self-improvement?</tr>
+								<tr>Creativity: How creative is this application comparing to existing apps?</tr>
 								<tr>
-									<td><input class="radio" type="radio" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);" name="<?php echo $row['id']; ?>[1]" value="1" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="4" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="5" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="6" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="7" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="8" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="9" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[1]" value="10" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);"/></td>
+									<?php for($i = 1; $i <= 10; $i++) {?>
+									<td><input class="radio" type="radio" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 1, this);" name="<?php echo $row['id']; ?>[1]" value="<?php echo $i; ?>" <?php echo $responses[$row['id']][1][$i]." "; ?>/></td>
+									<?php } ?>
+
 								</tr>
 								
 								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
-									<td>6</td>
-									<td>7</td>
-									<td>8</td>
-									<td>9</td>
-									<td>10</td>
+									<?php for($i = 1; $i <= 10; $i++) {?>
+									<td><?php echo $i; ?></td>
+									<?php } ?>
 								</tr>
 							</table>
 							<table>
-								<tr>Is the application user friendly?</tr>
+								<tr>Market: How much do you think it will be successful in the market?</tr>
 								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[2]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 2, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[2]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 2, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[2]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 2, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[2]" value="4" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 2, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[2]" value="5" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 2, this);"/></td>
+									<?php for($i = 1; $i <= 15; $i++) {?>
+									<td><input class="radio" type="radio" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 2, this);" name="<?php echo $row['id']; ?>[2]" value="<?php echo $i; ?>" <?php echo $responses[$row['id']][2][$i]." "; ?>/></td>
+									<?php } ?>
 								</tr>
 								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
+									<?php for($i = 1; $i <= 15; $i++) {?>
+									<td><?php echo $i; ?></td>
+									<?php } ?>
+									
 								</tr>
 							</table>
 							<table>
-								<tr>Does the application meet its own requirements?</tr>
+								<tr>Technology: How high is the level of technologies applied in this application?</tr>
 								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[3]" value="1"  onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 3, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[3]" value="2"  onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 3, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[3]" value="3"  onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 3, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[3]" value="4"  onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 3, this);"/></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[3]" value="5"  onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 3, this);"/></td>
+									<?php for($i = 1; $i <= 15; $i++) {?>
+									<td><input class="radio" type="radio" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 3, this);" name="<?php echo $row['id']; ?>[3]" value="<?php echo $i; ?>" <?php echo $responses[$row['id']][3][$i]." "; ?>/></td>
+									<?php } ?>
 								</tr>
 								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
+									<?php for($i = 1; $i <= 15; $i++) {?>
+									<td><?php echo $i; ?></td>
+									<?php } ?>
 								</tr>
 							</table>
 							<table>
-								<tr>How complete and robust is the application?</tr>
+								<tr>Usability: Is this app user-friendly?</tr>
 								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[4]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 4, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[4]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 4, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[4]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 4, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[4]" value="4" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 4, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[4]" value="5" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 4, this);" /></td>
+									<?php for($i = 1; $i <= 10; $i++) {?>
+									<td><input class="radio" type="radio" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 4, this);" name="<?php echo $row['id']; ?>[4]" value="<?php echo $i; ?>" <?php echo $responses[$row['id']][4][$i]." "; ?>/></td>
+									<?php } ?>
 								</tr>
 								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
+									<?php for($i = 1; $i <= 10; $i++) {?>
+									<td><?php echo $i; ?></td>
+									<?php } ?>
 								</tr>
 							</table>
-							<table>
-								<tr>How unique is this application?</tr>
-								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[5]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 5, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[5]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 5, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[5]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 5, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[5]" value="4" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 5, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[5]" value="5" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 5, this);" /></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
-								</tr>
-							</table>
-							<table>
-								<tr>Does the technological/design innovation provide a sustainable,</tr><tr> competitive advantage in the given theme?</tr>
-								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[6]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 6, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[6]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 6, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[6]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 6, this);" /></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-								</tr>
-							</table>
-							<table>
-								<tr>Does a competitive advantage exist over other applications in the given theme?</tr>
-								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[7]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 7, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[7]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 7, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[7]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 7, this);" /></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-								</tr>
-							</table>
-							<table>
-								<tr>Is the application description clear and detailed?</tr>
-								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[8]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 8, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[8]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 8, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[8]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 8, this);" /></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-								</tr>
-							</table>
-							<table>
-								<tr>Are the benefits to the user clear and sufficient?</tr>
-								<tr>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[9]" value="1" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 9, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[9]" value="2" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 9, this);" /></td>
-									<td><input class="radio" type="radio" name="<?php echo $row['id']; ?>[9]" value="3" onchange="updateScore(<?php echo $uid; ?>, <?php echo $row['id']; ?>, 9, this);" /></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-								</tr>
-							</table>
+							
 									
 					</span>
 					<?php } ?>
-					<span id="verify">Submit!
-						<input id="saveForm" type="submit" value="Submit" />
+					<span id="verify">
+						<br /><br />
+						
+						THANK YOU for submitting your votes. They have been added to the database. Please return this device back to AMASE.
+						
+						
 						</span>
 				</form>
 							<div id="state" style="color:red;">Updated!</div>
@@ -184,7 +97,7 @@
 </div>
 <script type="text/javascript">
 
-/* Uncomment this to enable Ajax update
+/* Uncomment this to enable Ajax update*/
 function updateScore(judge, team, question, elem)
 {
  var xmlhttp;
@@ -208,7 +121,7 @@ function updateScore(judge, team, question, elem)
 		}
 		xmlhttp.open("GET", "/index.php/voting/votingAjax/?j=" + judge + "&t=" + team + "&q=" + question + "&v=" + value,true);
 		xmlhttp.send();
-}*/
+}
 
 $(document).ready(function() {
 		$("#state").hide();
@@ -250,7 +163,7 @@ $(document).ready(function() {
 					}
 				<?php } ?>
 				
-				 $('#total<?php echo $row['id']; ?>').html('<h2>'+team<?php echo $row['id']; ?>total+' out of 42 points</h2>');
+				 $('#total<?php echo $row['id']; ?>').html('<h2>'+team<?php echo $row['id']; ?>total+' out of 50 points</h2>');
 			 });
 			<?php } ?>
 		<?php } ?>
@@ -262,17 +175,14 @@ $(document).ready(function() {
 			if (($("input[name='<?php echo $row['id']; ?>[1]']").is(':checked')) &&
 					($("input[name='<?php echo $row['id']; ?>[2]']").is(':checked')) &&
 					($("input[name='<?php echo $row['id']; ?>[3]']").is(':checked')) &&
-					($("input[name='<?php echo $row['id']; ?>[4]']").is(':checked')) &&
-					($("input[name='<?php echo $row['id']; ?>[5]']").is(':checked')) &&
-					($("input[name='<?php echo $row['id']; ?>[6]']").is(':checked')) &&
-					($("input[name='<?php echo $row['id']; ?>[7]']").is(':checked')) &&
-					($("input[name='<?php echo $row['id']; ?>[8]']").is(':checked')) &&
-					($("input[name='<?php echo $row['id']; ?>[9]']").is(':checked')))
+					($("input[name='<?php echo $row['id']; ?>[4]']").is(':checked')))
 					{
 						$("#tab<?php echo $row['id']; ?>").addClass("complete");
 						
 					}
 		
+		
+		// one for each team  
 			if(($("#tab1").hasClass("complete")) &&
 				($("#tab2").hasClass("complete")) &&
 				($("#tab3").hasClass("complete")) &&
@@ -282,7 +192,18 @@ $(document).ready(function() {
 				($("#tab7").hasClass("complete")) &&
 				($("#tab8").hasClass("complete")) &&
 				($("#tab9").hasClass("complete")) &&
-				($("#tab10").hasClass("complete")))
+				($("#tab10").hasClass("complete")) &&
+				($("#tab11").hasClass("complete")) &&
+				($("#tab12").hasClass("complete")) &&
+				($("#tab13").hasClass("complete")) &&
+				($("#tab14").hasClass("complete")) &&
+				($("#tab15").hasClass("complete")) &&
+				($("#tab16").hasClass("complete")) &&
+				($("#tab17").hasClass("complete")) &&
+				($("#tab18").hasClass("complete")) &&
+				($("#tab19").hasClass("complete")) &&
+				($("#tab20").hasClass("complete")) &&
+				($("#tab21").hasClass("complete")))
 				{
 					$("#submit").fadeIn(1000);
 				}
