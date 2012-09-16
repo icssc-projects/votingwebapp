@@ -244,14 +244,14 @@ $config['encryption_key'] = 'pBrFGFzk3HDe6t7N2eJDkcA3ANEyx76ekHtkDa';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'appJamVoting';
+$config['sess_cookie_name']		= 'amase';
 $config['sess_expiration']		= 21600;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
-$config['sess_match_useragent']	= TRUE;
+$config['sess_match_useragent']	= FALSE;
 $config['sess_time_to_update']	= 300;
 
 /*

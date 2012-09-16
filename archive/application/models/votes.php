@@ -14,7 +14,7 @@ class Votes extends CI_Model {
 
 	function getPastResponses($userid)
 	{
-		return $this->db->query("SELECT * FROM ajaxResults WHERE uid = $userid");
+		return $this->db->query("SELECT * FROM ajaxResults WHERE uid = '$userid'");
 	}
 
 	function insertScore($team, $data)

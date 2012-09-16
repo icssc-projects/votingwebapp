@@ -11,13 +11,13 @@ class Voting extends CI_Controller {
 
 		if(!$this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/welcome/index");
-		
-		$this->load->model('votes');
-		$base['teams'] = $this->votes->getTeams();
+			
 		$base['uid'] = $this->session->userdata('uid');
+		$this->load->model('votes');
+		$base['teams'] = $this->votes->getTeams();		
+	//	echo $base['uid'];
 		
-		
-		$preResponses = $this->votes->getPastResponses($this->session->userdata('uid'));
+		$preResponses = $this->votes->getPastResponses($base['uid']);
 		
 		$base['responses'] = array();
 		
