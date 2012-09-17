@@ -12,3 +12,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Development Files
+###################
+*.scp
