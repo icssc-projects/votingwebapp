@@ -30,7 +30,37 @@ class Dashboard extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	/*
+	* Login Handler
+	*
+	* Login handler for application. This is a two part
+	* solution. First is to handle $_POST base submissions.
+	*
+	* However, becaue this is a mobile application, for
+	* bookmarking purposes, it might be nice to use $_GET
+	* to auto login users. Security? Yes, its a concern. 
+	* Is it worth my time? Not at this point in time.
+	* 
+	* @author	Adam Brenner <aebrenne@uci.edu>
+	*/
+	public function login()
+	{
+		$base['siteurl'] = $this->siteurl;
 
+		if($this->session->userdata('uid')) // check to see if logged in
+			header("Location: ".$base['siteurl']."index.php/voting/index");
+
+		$user = $this->input->get_post('user', TRUE);
+		$pass = $this->input->get_post('pass', TRUE);
+
+		if(!$this->_isLoginValid($user,$pass)) {
+			echo "Invalid Account";
+		} else {
+			$uInfo = $this->Users->getUserInfo($user);
+			$this->session->set_userdata('uid', $uInfo->uid);
+			header("Location: ".$base['siteurl']."index.php/voting/index");
+		}
+	}
 
 	/*
 	* Login Screen
@@ -40,8 +70,31 @@ class Dashboard extends CI_Controller {
 	* @author	Adam Brenner <aebrenne@uci.edu>
 	* @access	private
 	*/
-	public function _handleLoginAuth() {
+	public function _isLoginValid($user,$pass) {
 		
+		if(!isset($user) || !isset($pass))
+			return false;
+		
+		$this->load->model("Users");
+		if(!$this->Users->isUserPresent($user,$pass)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/*
+	* LogOut Handler
+	*
+	* Logout a user.
+	* 
+	* @author	Adam Brenner <aebrenne@uci.edu>
+	*/
+	public function logout()
+	{
+		$base['siteurl'] = $this->siteurl;
+		$this->session->sess_destroy();
+		header("Location: ".$base['siteurl']."index.php");
 	}
 }
 
