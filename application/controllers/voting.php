@@ -28,8 +28,12 @@ class Voting extends CI_Controller {
 		$this->load->model("Teams");
 		$base['teams'] = $this->Teams->getAllTeams();
 		
+		$this->load->model("Questions");
+		$base['questions'] = $this->Questions->getAllQuestions();
+		
 		$this->load->view('header');
 		$this->load->view('voting/select-team',$base);
+		$this->load->view('voting/questions',$base);
 		$this->load->view('footer');
 	}
 

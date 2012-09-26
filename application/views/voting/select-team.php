@@ -1,4 +1,4 @@
-<div data-role="page" data-add-back-btn="true">
+<div data-role="page" data-add-back-btn="true" id="selectTeams">
 
 	<div data-role="header">
 		<h1>VotingApp</h1>
