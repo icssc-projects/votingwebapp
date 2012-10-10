@@ -5,7 +5,7 @@
 	</div><!-- /header -->
 
 	<div class="ui-body ui-body-e">
-		<form action="<?php echo $siteurl; ?>index.php/dashboard/login/" method="post">
+		<form action="<?php echo $siteurl; ?>index.php/dashboard/login/" method="post" data-ajax="false">
 			<p>Enter your login information: <br /><br /></p>
 			
 			<label for="username">Username:</label>
