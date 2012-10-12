@@ -28,8 +28,8 @@ foreach($teams->result() as $team) {
 							$label = "";
 					?>
 
-			     	<input type="radio" name="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" id="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" value="<?php echo $i; ?>" />
-			     	<label for="<?php echo $team->number; ?>[<?php echo $question->number; ?>]"><?php echo $i; ?> <?php echo $label; ?></label>
+			     	<input type="radio" name="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" id="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]" value="<?php echo $i; ?>" />
+			     	<label for="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]"><?php echo $i; ?> <?php echo $label; ?></label>
 			
 			<?php
 				} // ends $i
@@ -41,6 +41,9 @@ foreach($teams->result() as $team) {
 			?>
 		</div><!-- /content -->
 
+		<div data-role="footer">
+			<h4>Created by Adam Brenner for MedAppJam</h4>
+		</div><!-- /footer -->
 </div><!-- /page -->
 <?php
 } // ends $teams

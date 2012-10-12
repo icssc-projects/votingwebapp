@@ -19,7 +19,6 @@ class Voting extends CI_Controller {
 	*/
 	public function index()
 	{
-		$base['status']  = $this->uri->segment(3);
 		$base['siteurl'] = $this->siteurl;
 
 		if(!$this->session->userdata('uid')) // check to see if logged in
@@ -32,9 +31,28 @@ class Voting extends CI_Controller {
 		$base['questions'] = $this->Questions->getAllQuestions();
 		
 		$this->load->view('header');
+		$this->load->view('voting/javascript',$base);
 		$this->load->view('voting/select-team',$base);
 		$this->load->view('voting/questions',$base);
 		$this->load->view('footer');
+	}
+
+
+	/*
+	* Voting Ajax Record Page
+	*
+	* Records Ajax responses from voting app
+	* 
+	* @author	Adam Brenner <aebrenne@uci.edu>
+	*/
+	public function votingAjax()
+	{
+		$base['siteurl'] = $this->siteurl;
+
+		if(!$this->session->userdata('uid')) // check to see if logged in
+			header("Location: ".$base['siteurl']."index.php/dashboard/index");
+
+		echo $this->uri->segment(4);
 	}
 
 }
