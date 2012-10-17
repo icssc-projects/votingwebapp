@@ -22,7 +22,7 @@ function updateScore(judge, team, question, elem)
 				 $("#state").hide(500);
 			}
 		}
-		xmlhttp.open("GET", "<?php echo $siteurl; ?>/index.php/voting/votingAjax/j/" + judge + "&t=" + team + "&q=" + question + "&v=" + value,true);
+		xmlhttp.open("GET", "<?php echo $siteurl; ?>/index.php/voting/votingAjax/uid/" + judge + "/tid/" + team + "/question/" + question + "/value/" + value,true);
 		xmlhttp.send();
 }
 </script>

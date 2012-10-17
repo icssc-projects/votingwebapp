@@ -52,7 +52,12 @@ class Voting extends CI_Controller {
 		if(!$this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/dashboard/index");
 
-		echo $this->uri->segment(4);
+		$data = $this->uri->uri_to_assoc(3);
+
+		$this->load->model('Votes');
+		$this->Votes->ajaxInsert($data);
+		
+		echo "Updated!";
 	}
 
 }
