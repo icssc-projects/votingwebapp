@@ -30,6 +30,8 @@ class Voting extends CI_Controller {
 		$this->load->model("Questions");
 		$base['questions'] = $this->Questions->getAllQuestions();
 		
+		$base['uid'] = $this->session->userdata('uid');
+		
 		$this->load->view('header');
 		$this->load->view('voting/javascript',$base);
 		$this->load->view('voting/select-team',$base);
@@ -53,6 +55,16 @@ class Voting extends CI_Controller {
 			header("Location: ".$base['siteurl']."index.php/dashboard/index");
 
 		$data = $this->uri->uri_to_assoc(3);
+
+		foreach($data as $key => $value) {
+			if(!isset($value) || $value == null) {
+				echo "Missing value for key: $key";
+				exit;
+			}
+		}
+
+		echo "<pre>";
+		print_r($data);
 
 		$this->load->model('Votes');
 		$this->Votes->ajaxInsert($data);

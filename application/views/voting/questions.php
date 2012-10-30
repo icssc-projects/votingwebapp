@@ -1,6 +1,10 @@
 <?php
+// Notes:
+// $uid == Userid
+// $team->tid == Team ID
+// $question->qid == Question ID
+
 foreach($teams->result() as $team) {
-//	foreach($questions->result() as $question) {
 ?>
 <div data-role="page" data-add-back-btn="true" id="team<?php echo $team->number;?>">
 
@@ -28,9 +32,9 @@ foreach($teams->result() as $team) {
 							$label = "";
 					?>
 
-			     	<input type="radio" name="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" id="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]" value="<?php echo $i; ?>" />
+			     	<input type="radio" name="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" id="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]" value="<?php echo $i; ?>" onchange="updateScore(<?php echo $uid; ?>, <?php echo $team->tid; ?>, <?php echo $question->qid; ?>, this);" />
 			     	<label for="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]"><?php echo $i; ?> <?php echo $label; ?></label>
-			
+			<!-- <div id="state" style="color:red;">Updated!</div> -->
 			<?php
 				} // ends $i
 			?>

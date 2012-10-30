@@ -11,8 +11,8 @@ class Votes extends CI_Model {
     function ajaxInsert($data)
     {
 		// Produces something like
-		// SELECT * FROM results WHERE uid = $data['uid'] AND tid = $data['tid'] AND question = $data['question'] AND value = $data['value']
-		$query = $this->db->get_where("results",$data);
+		// SELECT * FROM results WHERE uid = $data['uid'] AND tid = $data['tid'] AND question = $data['question']
+		$query = $this->db->get_where("results",array('uid' => $data['uid'], 'tid' => $data['tid'], 'question' => $data['question']));
 
 		if($query->num_rows() == 0)
 			// Produces something like

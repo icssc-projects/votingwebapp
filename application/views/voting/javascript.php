@@ -14,7 +14,7 @@ function updateScore(judge, team, question, elem)
 		   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	    }
 	    xmlhttp.onreadystatechange=function()
-		{
+		{			
 		    if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		    {
 		         document.getElementById("state").innerHTML=xmlhttp.responseText + "<br />";
@@ -22,7 +22,11 @@ function updateScore(judge, team, question, elem)
 				 $("#state").hide(500);
 			}
 		}
-		xmlhttp.open("GET", "<?php echo $siteurl; ?>/index.php/voting/votingAjax/uid/" + judge + "/tid/" + team + "/question/" + question + "/value/" + value,true);
+		xmlhttp.open("GET", "<?php echo $siteurl; ?>index.php/voting/votingAjax/uid/" + judge + "/tid/" + team + "/question/" + question + "/value/" + value,true);
 		xmlhttp.send();
 }
+
+$(document).ready(function() {
+		$("#state").hide();
+});
 </script>
