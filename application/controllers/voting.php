@@ -63,9 +63,6 @@ class Voting extends CI_Controller {
 			}
 		}
 
-		echo "<pre>";
-		print_r($data);
-
 		$this->load->model('Votes');
 		$this->Votes->ajaxInsert($data);
 		
