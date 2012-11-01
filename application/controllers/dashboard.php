@@ -25,7 +25,7 @@ class Dashboard extends CI_Controller {
 		if($this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/voting/index");
 
-		$this->load->view('header');
+		$this->load->view('header',$base);
 		$this->load->view('dashboard/index',$base);
 		$this->load->view('footer');
 	}
@@ -56,7 +56,8 @@ class Dashboard extends CI_Controller {
 		if(!$this->_isLoginValid($user,$pass)) {
 			echo "Invalid Account";
 		} else {
-			$uInfo = $this->Users->getUserInfo($user);
+			$this->load->model("users");
+			$uInfo = $this->users->getUserInfo($user);
 			$this->session->set_userdata('uid', $uInfo->uid);
 			header("Location: ".$base['siteurl']."index.php/voting/index");
 		}
@@ -75,8 +76,8 @@ class Dashboard extends CI_Controller {
 		if(!isset($user) || !isset($pass))
 			return false;
 		
-		$this->load->model("Users");
-		if(!$this->Users->isUserPresent($user,$pass)) {
+		$this->load->model("users");
+		if(!$this->users->isUserPresent($user,$pass)) {
 			return false;
 		} else {
 			return true;

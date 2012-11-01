@@ -10,7 +10,8 @@ foreach($teams->result() as $team) {
 
 	<div data-role="header">
 		<h1>Team <?php echo $team->number; ?> - <?php echo $team->name; ?></h1>
-		<a href="#" data-icon="alert" data-theme="e" class="ui-btn-right">2 Hours, 59 minutes, 59 seconds</a>
+		<div data-role="button" data-icon="alert" data-theme="e" class="ui-btn-right" data-iconpos="left" id="countDownTimer"></div>
+		<!--<a href="#" data-icon="alert" data-theme="e" class="ui-btn-right" id="countDownTimer"></a>-->
 	</div><!-- /header -->
 
 	<div data-role="content">	

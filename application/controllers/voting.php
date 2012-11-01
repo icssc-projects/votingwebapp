@@ -24,21 +24,46 @@ class Voting extends CI_Controller {
 		if(!$this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/dashboard/index");
 
-		$this->load->model("Teams");
-		$base['teams'] = $this->Teams->getAllTeams();
+		$this->load->model("teams");
+		$base['teams'] = $this->teams->getAllTeams();
 		
-		$this->load->model("Questions");
-		$base['questions'] = $this->Questions->getAllQuestions();
-		
-		$base['uid'] = $this->session->userdata('uid');
-		
-		$this->load->view('header');
+		$this->load->view('header',$base);
 		$this->load->view('voting/javascript',$base);
 		$this->load->view('voting/select-team',$base);
-		$this->load->view('voting/questions',$base);
 		$this->load->view('footer');
 	}
 
+	/*
+	* Voting Page
+	*
+	* Question selection page for a specific team
+	* 
+	* @author	Adam Brenner <aebrenne@uci.edu>
+	*/
+	public function team()
+	{
+		$base['siteurl'] = $this->siteurl;
+
+		if(!$this->session->userdata('uid')) // check to see if logged in
+			header("Location: ".$base['siteurl']."index.php/dashboard/index");
+
+		$this->load->model("teams");
+		$tid = $this->uri->segment(3);
+		if($tid == false || !$this->teams->isValidTeam($tid)) {
+			echo "Team with a database ID of $tid was not found.";
+			exit;
+		}
+
+		$this->load->model("questions");
+		$base['questions'] = $this->questions->getAllQuestions();
+		$base['teams'] = $this->teams->getTeam($tid);
+		$base['uid'] = $this->session->userdata('uid');
+		
+		$this->load->view('header',$base);
+		$this->load->view('voting/javascript',$base);
+		$this->load->view('voting/questions',$base);
+		$this->load->view('footer');
+	}
 
 	/*
 	* Voting Ajax Record Page

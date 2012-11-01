@@ -11,7 +11,7 @@
 			foreach($teams->result() as $row) {
 			?>
 			<li data-role="list-divider">Team <?php echo $row->number; ?><span class="ui-li-count">Pending</span></li>
-			<li><a href="#team<?php echo $row->number; ?>" data-transition="slide">
+			<li><a href="<?php echo $siteurl; ?>index.php/voting/team/<?php echo $row->number; ?>/" data-transition="slide">
 				<h3><?php echo $row->name; ?></h3>
 				<p><?php echo $row->description; ?></p>
 				<p class="ui-li-aside"><strong><?php echo $row->location; ?></strong></p>
