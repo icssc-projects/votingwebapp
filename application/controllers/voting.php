@@ -27,9 +27,12 @@ class Voting extends CI_Controller {
 		$this->load->model("teams");
 		$base['teams'] = $this->teams->getAllTeams();
 		
+		$this->load->library('timer');
+		$base['timeLeft'] = $this->timer->getTimeLeft();
+		
 		$this->load->view('header',$base);
-		$this->load->view('voting/javascript',$base);
 		$this->load->view('voting/select-team',$base);
+		$this->load->view('voting/javascript',$base);
 		$this->load->view('footer');
 	}
 
@@ -59,10 +62,13 @@ class Voting extends CI_Controller {
 		$base['teams'] = $this->teams->getTeam($tid);
 		$base['uid'] = $this->session->userdata('uid');
 		
-		$this->load->view('header',$base);
-		$this->load->view('voting/javascript',$base);
+		$this->load->library('timer');
+		$base['timeLeft'] = $this->timer->getTimeLeft();
+		
+//		$this->load->view('header',$base);
 		$this->load->view('voting/questions',$base);
-		$this->load->view('footer');
+//		$this->load->view('voting/javascript',$base);
+//		$this->load->view('footer');
 	}
 
 	/*

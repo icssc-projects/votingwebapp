@@ -1,8 +1,8 @@
-<div data-role="page" data-add-back-btn="true" id="selectTeams">
+<div data-role="page" id="selectTeams">
 
 	<div data-role="header">
 		<h1>VotingApp</h1>
-		<a href="#" data-icon="alert" data-theme="e" class="ui-btn-right">2 Hours, 59 minutes, 59 seconds</a>
+		<a href="#" data-icon="alert" data-theme="e" class="ui-btn-right"><?php echo $timeLeft; ?></a>
 	</div><!-- /header -->
 
 	<div data-role="content">	

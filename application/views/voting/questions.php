@@ -6,12 +6,12 @@
 
 foreach($teams->result() as $team) {
 ?>
-<div data-role="page" data-add-back-btn="true" id="team<?php echo $team->number;?>">
+<div data-role="page" id="team<?php echo $team->number;?>">
 
 	<div data-role="header">
+		<a href="<?php echo $siteurl;?>index.php/voting/index/" data-icon="arrow-l" data-theme="a" data-transition="slide" data-direction="reverse" class="ui-btn-left">Back</a>
 		<h1>Team <?php echo $team->number; ?> - <?php echo $team->name; ?></h1>
-		<div data-role="button" data-icon="alert" data-theme="e" class="ui-btn-right" data-iconpos="left" id="countDownTimer"></div>
-		<!--<a href="#" data-icon="alert" data-theme="e" class="ui-btn-right" id="countDownTimer"></a>-->
+		<a href="#" data-icon="alert" data-theme="e" class="ui-btn-right"><?php echo $timeLeft; ?></a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
