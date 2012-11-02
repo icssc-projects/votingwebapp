@@ -24,7 +24,7 @@ class Voting extends CI_Controller {
 		if(!$this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/dashboard/index");
 
-		$this->load->model("teams");
+		$this->load->model('teams');
 		$base['teams'] = $this->teams->getAllTeams();
 		
 		$this->load->library('timer');
@@ -50,18 +50,24 @@ class Voting extends CI_Controller {
 		if(!$this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/dashboard/index");
 
-		$this->load->model("teams");
+		$this->load->model('teams');
 		$tid = $this->uri->segment(3);
 		if($tid == false || !$this->teams->isValidTeam($tid)) {
 			echo "Team with a database ID of $tid was not found.";
 			exit;
 		}
 
-		$this->load->model("questions");
+		$this->load->model('questions');
 		$base['questions'] = $this->questions->getAllQuestions();
 		$base['teams'] = $this->teams->getTeam($tid);
 		$base['uid'] = $this->session->userdata('uid');
+
+		$this->load->model('votes');
+		$base['results'] = $this->votes->getVotesByJudge($base['uid']);
 		
+		//echo "<pre>";
+		//print_r($base['results']->result_array());
+
 		$this->load->library('timer');
 		$base['timeLeft'] = $this->timer->getTimeLeft();
 		

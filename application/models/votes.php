@@ -12,7 +12,7 @@ class Votes extends CI_Model {
     {
 		// Produces something like
 		// SELECT * FROM results WHERE uid = $data['uid'] AND tid = $data['tid'] AND question = $data['question']
-		$query = $this->db->get_where("results",array('uid' => $data['uid'], 'tid' => $data['tid'], 'question' => $data['question']));
+		$query = $this->db->get_where('results',array('uid' => $data['uid'], 'tid' => $data['tid'], 'question' => $data['question']));
 
 		if($query->num_rows() == 0)
 			// Produces something like
@@ -29,6 +29,39 @@ class Votes extends CI_Model {
 		}
 
     }
+	/*
+	* result_array() returns an array to the one shown below. What
+	* would be best if we had a mulit d-array that corresponds to
+	* each key in the array below.
+	*
+	*	Array
+	*	(
+	*	    [0] => Array
+	*	        (
+	*	            [uid] => 1
+	*	            [tid] => 1
+	*	            [question] => 1
+	*	            [value] => 1
+	*	        )
+	*
+	*	    [1] => Array
+	*	        (
+	*	            [uid] => 1
+	*	            [tid] => 1
+	*	            [question] => 2
+	*	            [value] => 2
+	*	        )
+	*	)
+	*/
+	function getVotesByJudge($uid)
+	{
+		$query = $this->db->get_where('results',array('uid' => $uid));
+
+		foreach($query->result_array() as $key)
+			$results[$key['tid']][$key['question']] = $key['value'];
+		
+		return $results;
+	}
 
 }
 /* End of file votes.php */
