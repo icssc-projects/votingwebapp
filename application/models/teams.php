@@ -36,6 +36,25 @@ class Teams extends CI_Model {
 			return false;
 	}
 
+//SELECT tid, COUNT(question) AS count FROM results WHERE uid = 1 GROUP BY tid;
+	function hasFinishedVoting($uid)
+	{
+		$query = $this->db->query('SELECT tid, COUNT(question) AS count FROM results WHERE uid = '.$this->db->escape($uid).' GROUP BY tid');
+		$numberOfQuestions = $this->_countQuestions();
+		foreach($query->result_array() as $key)
+			if($key['count'] != $numberOfQuestions)
+				$results[$key['tid']] = FALSE;
+			else
+				$results[$key['tid']] = TRUE;
+		
+		return $results;
+	}
+
+	private function _countQuestions()
+	{
+		return $this->db->count_all('questions');
+	}
+
 }
 /* End of file teams.php */
 /* Location: ./application/models/teams.php */

@@ -29,6 +29,7 @@ class Votes extends CI_Model {
 		}
 
     }
+
 	/*
 	* result_array() returns an array to the one shown below. What
 	* would be best if we had a mulit d-array that corresponds to
@@ -53,14 +54,22 @@ class Votes extends CI_Model {
 	*	        )
 	*	)
 	*/
-	function getVotesByJudge($uid)
+	function getVotesByJudge($uid,$tid)
 	{
-		$query = $this->db->get_where('results',array('uid' => $uid));
+		$query = $this->db->get_where('results',array('uid' => $uid, 'tid' => $tid));
+
+		for($i = 1; $i <= $this->_countQuestions(); $i++)
+			$results[$i] = 0;
 
 		foreach($query->result_array() as $key)
-			$results[$key['tid']][$key['question']] = $key['value'];
+			$results[$key['question']] = $key['value'];
 		
 		return $results;
+	}
+
+	private function _countQuestions()
+	{
+		return $this->db->count_all('questions');
 	}
 
 }

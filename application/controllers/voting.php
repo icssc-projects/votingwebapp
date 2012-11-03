@@ -26,6 +26,7 @@ class Voting extends CI_Controller {
 
 		$this->load->model('teams');
 		$base['teams'] = $this->teams->getAllTeams();
+		$base['votingStatus'] = $this->teams->hasFinishedVoting($this->session->userdata('uid'));
 		
 		$this->load->library('timer');
 		$base['timeLeft'] = $this->timer->getTimeLeft();
@@ -63,7 +64,7 @@ class Voting extends CI_Controller {
 		$base['uid'] = $this->session->userdata('uid');
 
 		$this->load->model('votes');
-		$base['results'] = $this->votes->getVotesByJudge($base['uid']);
+		$base['results'] = $this->votes->getVotesByJudge($base['uid'],$tid);
 		
 		//echo "<pre>";
 		//print_r($base['results']->result_array());

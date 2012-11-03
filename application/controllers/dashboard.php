@@ -23,7 +23,7 @@ class Dashboard extends CI_Controller {
 		$base['siteurl'] = $this->siteurl;
 
 		if($this->session->userdata('uid')) // check to see if logged in
-			header("Location: ".$base['siteurl']."index.php/voting/index");
+			header("Location: ".$base['siteurl']."index.php/voting/");
 
 		$this->load->view('header',$base);
 		$this->load->view('dashboard/index',$base);
@@ -48,7 +48,7 @@ class Dashboard extends CI_Controller {
 		$base['siteurl'] = $this->siteurl;
 
 		if($this->session->userdata('uid')) // check to see if logged in
-			header("Location: ".$base['siteurl']."index.php/voting/index");
+			header("Location: ".$base['siteurl']."index.php/voting/");
 
 		$user = $this->input->get_post('user', TRUE);
 		$pass = $this->input->get_post('pass', TRUE);
@@ -59,7 +59,7 @@ class Dashboard extends CI_Controller {
 			$this->load->model("users");
 			$uInfo = $this->users->getUserInfo($user);
 			$this->session->set_userdata('uid', $uInfo->uid);
-			header("Location: ".$base['siteurl']."index.php/voting/index");
+			header("Location: ".$base['siteurl']."index.php/voting/");
 		}
 	}
 

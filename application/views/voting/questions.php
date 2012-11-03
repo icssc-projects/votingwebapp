@@ -6,7 +6,7 @@
 
 foreach($teams->result() as $team) {
 ?>
-<div data-role="page" id="team<?php echo $team->number;?>">
+<div data-role="page" id="team<?php echo $team->number;?>" data-dom-cache="false">
 
 	<div data-role="header">
 		<a href="<?php echo $siteurl;?>index.php/voting/index/" data-icon="arrow-l" data-theme="a" data-transition="slide" data-direction="reverse" class="ui-btn-left">Back</a>
@@ -33,7 +33,7 @@ foreach($teams->result() as $team) {
 							$label = "";
 					?>
 
-			     	<input type="radio" name="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" id="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]" value="<?php echo $i; ?>" onchange="updateScore(<?php echo $uid; ?>, <?php echo $team->tid; ?>, <?php echo $question->qid; ?>, this);" />
+			     	<input type="radio" name="<?php echo $team->number; ?>[<?php echo $question->number; ?>]" id="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]" value="<?php echo $i; ?>" onchange="updateScore(<?php echo $uid; ?>, <?php echo $team->tid; ?>, <?php echo $question->qid; ?>, this);" <?php echo $results[$question->number] != 0 && $i == $results[$question->number] ? 'checked="checked"' : ''; ?> />
 			     	<label for="<?php echo $team->number; ?>[<?php echo $question->number; ?>][<?php echo $i; ?>]"><?php echo $i; ?> <?php echo $label; ?></label>
 			<!-- <div id="state" style="color:red;">Updated!</div> -->
 			<?php
