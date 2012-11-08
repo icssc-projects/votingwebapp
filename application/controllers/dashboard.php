@@ -69,8 +69,8 @@ class Dashboard extends CI_Controller {
 		if($this->session->userdata('uid')) // check to see if logged in
 			header("Location: ".$base['siteurl']."index.php/voting/");
 
-		$user = $this->input->get_post('user', TRUE);
-		$pass = $this->input->get_post('pass', TRUE);
+		$user = $this->input->get_post('username', TRUE);
+		$pass = $this->input->get_post('password', TRUE);
 
 		if(!$this->_isLoginValid($user,$pass)) {
 			echo "Invalid Account";
