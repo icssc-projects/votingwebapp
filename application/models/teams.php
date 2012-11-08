@@ -36,11 +36,16 @@ class Teams extends CI_Model {
 			return false;
 	}
 
-//SELECT tid, COUNT(question) AS count FROM results WHERE uid = 1 GROUP BY tid;
+//	SELECT teams.tid, COUNT(results.question) as count FROM results RIGHT JOIN teams ON teams.tid = results.tid GROUP BY teams.tid
 	function hasFinishedVoting($uid)
 	{
 		$query = $this->db->query('SELECT tid, COUNT(question) AS count FROM results WHERE uid = '.$this->db->escape($uid).' GROUP BY tid');
 		$numberOfQuestions = $this->_countQuestions();
+
+
+		foreach($this->getAllTeams()->result_array() as $key)
+			$results[$key['tid']] = FALSE;
+
 		foreach($query->result_array() as $key)
 			if($key['count'] != $numberOfQuestions)
 				$results[$key['tid']] = FALSE;

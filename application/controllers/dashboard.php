@@ -31,6 +31,25 @@ class Dashboard extends CI_Controller {
 	}
 
 	/*
+	* Results Screen
+	*
+	* Results for voting
+	* 
+	* @author	Adam Brenner <aebrenne@uci.edu>
+	*/
+	public function results()
+	{
+		$base['siteurl'] = $this->siteurl;
+
+		$this->load->model("votes");
+		$base['results'] = $this->votes->getResults();
+
+		$this->load->view('header',$base);
+		$this->load->view('dashboard/results',$base);
+		$this->load->view('footer');
+	}
+
+	/*
 	* Login Handler
 	*
 	* Login handler for application. This is a two part

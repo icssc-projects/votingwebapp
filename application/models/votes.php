@@ -71,6 +71,11 @@ class Votes extends CI_Model {
 	{
 		return $this->db->count_all('questions');
 	}
+	
+	function getResults()
+	{
+		return $this->db->query('SELECT results.tid, teams.name, SUM(value) AS total, COUNT(results.tid) AS count FROM results, teams WHERE teams.tid = results.tid GROUP BY results.tid ORDER BY total DESC');
+	}
 
 }
 /* End of file votes.php */

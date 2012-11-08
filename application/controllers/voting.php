@@ -27,6 +27,9 @@ class Voting extends CI_Controller {
 		$this->load->model('teams');
 		$base['teams'] = $this->teams->getAllTeams();
 		$base['votingStatus'] = $this->teams->hasFinishedVoting($this->session->userdata('uid'));
+		echo "<pre>";
+		print_r($base['votingStatus']);
+		echo "</pre>";
 		
 		$this->load->library('timer');
 		$base['timeLeft'] = $this->timer->getTimeLeft();
