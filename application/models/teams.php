@@ -60,10 +60,6 @@ class Teams extends CI_Model {
 		foreach($this->getAllTeams()->result_array() as $key)
 			$results[$key['tid']] = FALSE;
 
-		echo "<pre>";
-		print_r($results);
-		echo "</pre>";
-
 		foreach($query->result_array() as $key)
 			if($key['count'] != $numberOfQuestions)
 				$results[$key['tid']] = FALSE;
