@@ -15,7 +15,7 @@ foreach($teams->result() as $team) {
 	</div><!-- /header -->
 
 	<div data-role="content">	
-			<p>Team <?php echo $team->number; ?> - <?php echo $team->name; ?></p>
+			<p><?php echo $team->name; ?></p>
 			<?php
 			foreach($questions->result() as $question) {
 			?>
@@ -25,7 +25,7 @@ foreach($teams->result() as $team) {
 					for($i = $question->minValue; $i <= $question->maxValue; $i++) {
 						if($i == $question->minValue)
 							$label = "- Poor";
-						elseif($i == ceil(($question->maxValue - $question->minValue) / 2))
+						elseif($i == floor(($question->maxValue + $question->minValue) / 2))
 							$label = "- Average";
 						elseif($i == $question->maxValue)
 							$label = "- Excellent";
@@ -47,7 +47,7 @@ foreach($teams->result() as $team) {
 		</div><!-- /content -->
 
 		<div data-role="footer">
-			<h4>Created by Adam Brenner for AppJam+</h4>
+			<h4>Created by Adam Brenner for MedAppJam</h4>
 		</div><!-- /footer -->
 </div><!-- /page -->
 <?php

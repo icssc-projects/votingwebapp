@@ -36,6 +36,20 @@ class Teams extends CI_Model {
 			return false;
 	}
 
+	function getTeamsScoreByJudge($uid)
+	{
+		foreach($this->getAllTeams()->result_array() as $key)
+			$results[$key['tid']] = 0;
+
+		$query = $this->db->query('SELECT tid, SUM(value) AS score FROM results WHERE uid = '.$this->db->escape($uid).' GROUP BY tid');
+		
+		foreach($query->result_array() as $key)
+				$results[$key['tid']] = $key['score'];
+		
+		return $results;
+	}
+
+
 //	SELECT teams.tid, COUNT(results.question) as count FROM results RIGHT JOIN teams ON teams.tid = results.tid GROUP BY teams.tid
 	function hasFinishedVoting($uid)
 	{
@@ -45,6 +59,10 @@ class Teams extends CI_Model {
 
 		foreach($this->getAllTeams()->result_array() as $key)
 			$results[$key['tid']] = FALSE;
+
+		echo "<pre>";
+		print_r($results);
+		echo "</pre>";
 
 		foreach($query->result_array() as $key)
 			if($key['count'] != $numberOfQuestions)

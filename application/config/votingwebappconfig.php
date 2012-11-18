@@ -12,7 +12,7 @@
 | Example:
 |	2012-11-08 6:40pm
 */
-$config['countdown_timer']	= '2012-11-08 6:40pm';
+$config['countdown_timer']	= '2012-11-19 8:20pm';
 
 /* End of file votingwebappconfig.php */
 /* Location: ./application/config/votingwebappconfig.php */

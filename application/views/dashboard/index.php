@@ -21,6 +21,6 @@
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>Created by Adam Brenner for AppJam+</h4>
+		<h4>Created by Adam Brenner for MedAppJam</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->

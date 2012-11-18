@@ -10,10 +10,10 @@
 			<?php
 			foreach($teams->result() as $row) {
 			?>
-			<li data-role="list-divider">Team <?php echo $row->number; ?><?php echo $votingStatus[$row->number] ? '<span class="ui-li-count" style="border:1px solid green;text-shadow:none;background:green;color:white">Completed</span>' : '<span class="ui-li-count">Pending</span>' ?></li>
-			<li><a href="<?php echo $siteurl; ?>index.php/voting/team/<?php echo $row->number; ?>/" data-transition="slide">
+			<li data-role="list-divider">Team <?php echo $row->number; ?><?php echo $votingStatus[$row->tid] ? '<span class="ui-li-count" style="border:1px solid green;text-shadow:none;background:green;color:white">Completed</span>' : '<span class="ui-li-count">Pending</span>' ?></li>
+			<li><a href="<?php echo $siteurl; ?>index.php/voting/team/<?php echo $row->tid; ?>/" data-transition="slide">
 				<h3><?php echo $row->name; ?></h3>
-				<p><?php echo $row->description; ?></p>
+				<p>Score: <strong><span style="color:red;"><?php echo $teamScores[$row->tid]."/".$maxPoints; ?></span></strong></p>
 				<p class="ui-li-aside"><strong><?php echo $row->location; ?></strong></p>
 				</a>
 			</li>
@@ -24,6 +24,6 @@
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>Created by Adam Brenner for AppJam+</h4>
+		<h4>Created by Adam Brenner for MedAppJam</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
