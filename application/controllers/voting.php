@@ -30,12 +30,6 @@ class Voting extends CI_Controller {
 		$base['votingStatus'] = $this->teams->hasFinishedVoting($this->session->userdata('uid'));
 		$base['teamScores'] = $this->teams->getTeamsScoreByJudge($this->session->userdata('uid'));
 		$base['maxPoints'] = $this->questions->getMaxPoints();
-		
-		echo "<pre>";
-		echo $base['maxPoints'];
-		echo "\n";
-		print_r($base['teamScores']);
-		echo "</pre>";
 
 		$this->load->library('timer');
 		$base['timeLeft'] = $this->timer->getTimeLeft();
